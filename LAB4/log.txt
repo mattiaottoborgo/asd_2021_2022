@@ -1,0 +1,7 @@
+A0003 Antonio Neri 1999/04/19 GalleriaTermini Roma 185
+A0003 Antonio Verdi 1992/04/19 GalleriaTermini Roma 185
+A0003 Antonio Rossi 1991/04/19 GalleriaTermini Roma 185
+A0003 Antonio Binachi 1990/04/19 GalleriaTermini Roma 185
+A0001 Mario Rossi 1990/02/01 ViaMarcoPolo Torino 10129
+A0002 Lucia Verdi 1989/11/07 ViaTorino Milano 20123
+A9999 vlad imir 06/06/2021 viasacchi torino 10090

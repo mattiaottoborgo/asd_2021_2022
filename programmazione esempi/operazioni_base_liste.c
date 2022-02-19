@@ -29,7 +29,11 @@ int KEYeq(Key key1,Key key2){
 Item Itemsetvoid(){
     Item d;
     d.value=-1;
-    d.key=NULL;
+    d.key=-1;
+    return d;
+}
+int KEYgr(Key key1, Key key2){
+    return key1>key2;
 }
 
 //funzioni sui nodi
@@ -193,9 +197,108 @@ link ListDelKeyR(link x,Key k){
      // senza operare alcun bypass
 
 }
+
+link SortListIns(Item item,link h){
+    link x,p;
+    Key key_item=KEYget(item);
+    if (h==NULL || KEYgr(KEYget(h->val),key_item)){
+        //inserimento in testa
+        return newNode(item,h);
+        
+    }
+    for(x=h->next,p=h;x!=NULL && KEYgr(key_item,KEYget(x->val));p=x,x=x->next);
+    p->next=newNode(item,x);
+    return h;
+}
+
+Item SortListSearch(Key key,link h){
+    link x;
+    Item item;
+    for(x=h;x!=NULL && !KEYeq(key,KEYget(x->val));x=x->next);
+    if(x!=NULL) return x->val;
+    return Itemsetvoid();
+}
+link SortListDel(link h,Key k){
+    link x,p;
+    if (h==NULL) return NULL;
+    for(x=h,p=NULL;x!=NULL;p=x,x=x->next){
+        if(KEYeq(k,KEYget(x->val))){
+            if(x==h) h=x->next;
+            else p->next=x->next;
+            free(x);
+            break;
+        }
+
+    }
+    return h;
+}
+link ListSortF(link h){
+    //ordinamento tramite insertion sort
+    link y=h,r=NULL;
+    Item tmp;
+    while(y!=NULL){
+        tmp=ListExtractHead(&y);
+        r=SortListIns(tmp,r);
+    }
+    return r;
+}
+link ListSortI(link h){
+    link t,u,x;
+    //t=valore corrente da sistemare
+    if(h==NULL) return NULL;
+    for(t=h->next,h->next=NULL;t!=NULL;t=u){ //parto da secondo elemento, perchè in insertion sort considero il primo come ordinato
+         u=t->next; //mi salvo il next del nodo corrente, altrimenti lo perdo
+        //inserimento in testa
+        if(KEYgr(KEYget(h->val),KEYget(t->val))){
+            t->next=h;
+            h=t;
+        }
+        else{       
+            //inserimento in mezzo 
+            for(x=h;x->next!=NULL;x=x->next){ //scorro su lista che si sta creando
+                if(KEYgr(KEYget(x->next->val),KEYget(t->val))){
+                    break; //t verrà inserito prima di x->next
+                }
+
+            }
+            t->next=x->next; // t punterà al successivo di x
+            x->next=t;       // x punterà a t
+        }
+    }
+    return h;
+}
+
+link SortListI(link h){
+    link t,u,x;
+    if (h==NULL) return NULL;
+    for(t=h->next,h->next==NULL;t!=NULL;t=u){
+        //ins testa
+        u=t->next;
+        if(KEYgr(KEYget(h->val),KEYget(t->val))){
+            t->next=h;
+            h=t;
+        }
+        else{
+            for(x=h;x->next!=NULL;x=x->next){//scorre su lista nuova che si sta creando
+                if(KEYgr(KEYget(x->next->val),KEYget(t->val))){
+                    break;
+                }
+            }
+            t->next=x->next;
+            x->next=t;
+        }
+    }
+
+
+
+    return h;
+}
+
+
 int main(){
     link HEAD=NULL;
     link tail;
+    link h_sorted=NULL;
     Item d1;d1.key=1;d1.value=10.0;
     Item d2;d2.key=2;d2.value=20.0;
     Item d3;d3.key=3;d3.value=66.6;
@@ -222,10 +325,9 @@ int main(){
     //HEAD=ListDelKey(HEAD,keydel);// d3->d4->NULL
     //ListDelKey2(&HEAD,keydel);
     //HEAD=ListDelKeyR(HEAD,keydel);
-    Item extr_k=ListExtrKeyP(&HEAD,keyext);
-
-
-
+    //Item extr_k=ListExtrKeyP(&HEAD,keyext); //estrazione data una chiave
+    //HEAD=ListSortF(HEAD);
+    HEAD=ListSortI(HEAD);
 
     printf("ciao");
 

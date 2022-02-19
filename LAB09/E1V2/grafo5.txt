@@ -1,0 +1,13 @@
+5
+A 
+B 
+C 
+D
+E
+A B 15
+A E 7
+E B 50
+B A 8
+B C 90
+C D 5
+D C 10

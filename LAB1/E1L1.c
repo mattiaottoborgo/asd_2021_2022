@@ -5,7 +5,7 @@
 #define MAX 100
 char *cercaRegexp(char *src, char *regexp);
 int evaluate_reg_1(char *c);
-int evaluate_reg_2(char *c, char *list_of_char, int len_list);
+int evaluate_reg_2(char c, char *list_of_char, int len_list);
 int evaluate_reg_4(char *c);
 int evaluate_reg_5(char *c);
 int regexQuadra(char *src, char *regexp, int *i, int *j);
@@ -98,7 +98,7 @@ int evaluate_reg_1(char *c) {
     if (isalpha(*c)) return 1;
     else return 0;
 }
-int evaluate_reg_2(char *c, char *list_of_char, int len_list) {
+int evaluate_reg_2(char c, char *list_of_char, int len_list) {
     for (int i = 0; i < len_list; i++) {
         if (c == list_of_char[i]) return 1; //list_of_char è un puntatore, però lo tratto come vettore grazie 
                                             // al dualismo che li caratterizzano.

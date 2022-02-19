@@ -1,0 +1,21 @@
+7
+A
+B
+C
+D
+E
+F
+G
+A  F 12
+A  E 45
+A  D 67
+A  C 12
+A  B 34
+B  F 5
+B  E 90
+C  F 90
+C  D 5
+D  E 12
+E  F 1
+E  G 2
+F  G 3

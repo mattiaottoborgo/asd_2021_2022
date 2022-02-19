@@ -54,10 +54,10 @@ void leggi_file(int *n_linee,corsa *arr_corse){
     }
     
     fscanf(f,"%d\n",n_linee);
-    printf("n linee %d\n",n_linee);
+    printf("n linee %d\n",*n_linee);
 
     // lettura dei dati
-    while (fscanf(f,"%s %s %s %s %s %s %s",&arr_corse[i].cod,&arr_corse[i].partenza,&arr_corse[i].destinazione,&arr_corse[i].data,&arr_corse[i].orap,&arr_corse[i].orad,&arr_corse[i].ritardo)==7&& i<n_linee)
+    while (fscanf(f,"%s %s %s %s %s %s %d",&arr_corse[i].cod,&arr_corse[i].partenza,&arr_corse[i].destinazione,&arr_corse[i].data,&arr_corse[i].orap,&arr_corse[i].orad,&arr_corse[i].ritardo)==7&& i<n_linee)
     {
         printf(" corsa [%d]  %s %s %s %s %s %s\n",i+1,arr_corse[i].cod,arr_corse[i].partenza,arr_corse[i].destinazione,arr_corse[i].data,arr_corse[i].orap,arr_corse[i].orad,arr_corse[i].ritardo);
         i++;

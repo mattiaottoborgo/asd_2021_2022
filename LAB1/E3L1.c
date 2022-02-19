@@ -29,6 +29,7 @@ void ordina(corsa *lista_tratte,int n_tratte,int tipo_ord);
 void menu(char (*lista_c)[MAX_CHAR_COMANDO],corsa arr_tratte[],int n_tratte);
 void print_comandi();
 void stampa(corsa *arr_tratte, int n_tratte);
+void scambia(corsa *p1,corsa *p2);
 void ric_lin(corsa *lista_tratte, int n_tratte, char *str_to_find);
 void ric_dico(corsa *lista_tratte, int n_tratte, char *str_to_find);
 int read_comando(char *comando,char (*lista_comandi)[MAX_CHAR_COMANDO]);

@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "stdlib.h": "c",
+        "mod_pers.h": "c",
+        "mod_inv.h": "c"
+    }
+}
